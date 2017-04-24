@@ -20,6 +20,7 @@
                 padding: 10px;
                 border: 1px solid;
                 display: none;
+                text-shadow:none;
             }
 
             .tooltip_key {
@@ -180,16 +181,16 @@
             //.style('fill-opacity', 0.3)
 
 
-            .on("mousemove", function(d) {
-                //console.log(d);
+            .on("mouseover", function(d) {
+                console.log(d);
 
                 var html = "";
 
-                html += "<div class=\"tooltip_kv\">";
-                html += "<span class=\"tooltip_key\">";
-                html += d.properties.postalCode;
+                html += "<div class='tooltip_kv'>";
+                html += "<span class='tooltip_key'>";
+                html += d.properties.borough;
                 html += "</span>";
-                html += "<span class=\"tooltip_value\">";
+                html += "<span class='tooltip_value'>";
                 html += d.properties.postalCode;
                 html += "";
                 html += "</span>";
@@ -213,12 +214,14 @@
                     .style("top", (d3.event.layerY + 15) + "px")
                     .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
                 }
+
+                
             })
             .on("mouseout", function() {
                 $(this).attr("fill-opacity", "1.0");
                 $("#tooltip-container").hide();
             })
-            .text("district")
+//            .text("district")
             .style("fill", function(d) {
                 //console.log(d);
                 /*
