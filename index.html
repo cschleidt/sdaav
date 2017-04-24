@@ -8,20 +8,30 @@
         
         <link rel="stylesheet" type="text/css" href="styles.css" />
         
-        <!-- Internet Explorer HTML5 enabling code: -->
-        
-        <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        
         <style type="text/css">
-        .clear {
-          zoom: 1;
-          display: block;
-        }
+            .categories-choropleth {
+                fill: #ccc;
+            }
+
+            #tooltip-container {
+                position: absolute;
+                background-color: #fff;
+                color: #000;
+                padding: 10px;
+                border: 1px solid;
+                display: none;
+            }
+
+            .tooltip_key {
+                font-weight: bold;
+            }
+
+            .tooltip_value {
+                margin-left: 20px;
+                float: right;
+            }
         </style>
 
-        
-        <![endif]-->
         
     </head>
     
@@ -59,10 +69,9 @@
                     
                     <div class="articleBody clear">
                     
-                    	<figure> 
-	                    	<a href="http://tutorialzine.com/2010/02/photo-shoot-css-jquery/"><img src="/img/barnewyork.jpeg" width="620" height="340" /></a>
-                        </figure>
-                        
+                    	<div id="viz"></div>
+                        <div id="tooltip-container"></div>
+
                         <p>....</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
                     </div>
@@ -77,6 +86,7 @@
                 
                 <article id="article2">
                     <h2>Sweet AJAX Tabs</h2>
+<!--
                     
                     <div class="line"></div>
                     
@@ -88,6 +98,7 @@
                         <p>Here we are making sweet AJAX-powered tabs with CSS3 and the newly released version 1.4 of jQuery.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
                     </div>
+-->
                 </article>
                 
 				<!-- Article 2 end -->
@@ -98,6 +109,7 @@
                 
                 <article id="article3">
                     <h2>Halftone Navigation Menu</h2>
+<!--
                     
                     <div class="line"></div>
                     
@@ -109,10 +121,8 @@
                         <p>Today we are making a CSS3 & jQuery halftone-style navigation menu, which will allow you to display animated halftone-style shapes in accordance with the navigation links, and will provide a simple editor for creating additional shapes as well.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
                     </div>
+-->
                 </article>
-                
-				<!-- Article 3 end -->
-
 
             </section>
 
@@ -120,10 +130,9 @@
 
            <div class="line"></div>
            
-           <p>Copyright 2010 - YourSite.com</p> <!-- Change the copyright notice -->
+           <p>Copyright 2017 - The bar team</p>
            
            <a href="#" class="up">Go UP</a>
-           <a href="http://tutorialzine.com/2010/02/html5-css3-website-template/" class="by">Template by Tutorialzine</a>
            
 
         </footer>
@@ -135,5 +144,96 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
         <script src="jquery.scrollTo-1.4.2/jquery.scrollTo-min.js"></script>
         <script src="script.js"></script>
+        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
     </body>
+
+<script>
+
+    var colors = d3.scale.category10();
+    var w = 900, h = 800
+    var projection = d3.geo.mercator()
+        .center([-73.896522306614344, 40.754388796109033])
+        .translate([w/2, h/2])
+        .scale([75000]);
+
+    var svg = d3.select("#viz")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+        
+
+    var path = d3.geo.path()
+            .projection(projection);
+
+    d3.json("nyc.json", function(json) {
+        //console.log(json);  //Log output to console
+
+        svg.append("g")
+            .attr("class", "categories-choropleth")
+            .selectAll("path")
+            .data(json.features)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .style("stroke-width", "1")
+            .style("stroke", "black")
+            //.style('fill-opacity', 0.3)
+
+
+            .on("mousemove", function(d) {
+                //console.log(d);
+
+                var html = "";
+
+                html += "<div class=\"tooltip_kv\">";
+                html += "<span class=\"tooltip_key\">";
+                html += d.properties.postalCode;
+                html += "</span>";
+                html += "<span class=\"tooltip_value\">";
+                html += d.properties.postalCode;
+                html += "";
+                html += "</span>";
+                html += "</div>";
+                
+                $("#tooltip-container").html(html);
+                $(this).attr("fill-opacity", "0.8");
+                $("#tooltip-container").show();
+                
+                var coordinates = d3.mouse(this);
+                
+                var map_width = $('.categories-choropleth')[0].getBoundingClientRect().width;
+                
+                if (d3.event.layerX < map_width / 2) {
+                    d3.select("#tooltip-container")
+                    .style("top", (d3.event.layerY + 15) + "px")
+                    .style("left", (d3.event.layerX + 15) + "px");
+                } else {
+                    var tooltip_width = $("#tooltip-container").width();
+                    d3.select("#tooltip-container")
+                    .style("top", (d3.event.layerY + 15) + "px")
+                    .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
+                }
+            })
+            .on("mouseout", function() {
+                $(this).attr("fill-opacity", "1.0");
+                $("#tooltip-container").hide();
+            })
+            .text("district")
+            .style("fill", function(d) {
+                //console.log(d);
+                /*
+                if (valueById.get(d.id)) {
+                    var i = quantize(valueById.get(d.id));
+                    var color = colors[i].getColors();
+                    return "rgb(" + color.r + "," + color.g +
+                            "," + color.b + ")";
+                } else {
+                    return "";
+                }
+                */
+            });
+    });
+
+</script>
+
 </html>
