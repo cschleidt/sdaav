@@ -1,242 +1,322 @@
-<!DOCTYPE html> <!-- The new doctype -->
+<!DOCTYPE html>
 <html>
-    <head>
-    
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
-        <title>The bar in New York</title>
-        
-        <link rel="stylesheet" type="text/css" href="styles.css" />
-        
-        <style type="text/css">
-            .categories-choropleth {
-                fill: #ccc;
-            }
+<head>
 
-            #tooltip-container {
-                position: absolute;
-                background-color: #fff;
-                color: #000;
-                padding: 10px;
-                border: 1px solid;
-                display: none;
-                text-shadow:none;
-            }
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-            .tooltip_key {
-                font-weight: bold;
-            }
+    <title>The bar in New York</title>
 
-            .tooltip_value {
-                margin-left: 20px;
-                float: right;
-            }
-        </style>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 
-        
-    </head>
-    
-    <body>
-    	
-    	<section id="page"> <!-- Defining the #page section with the section tag -->
-    
-            <header> <!-- Defining the header section of the page with the appropriate tag -->
-            
-                <hgroup>
-                    <h1>SDAAV</h1>
-                    <h3>the bar in New York</h3>
-                </hgroup>
-                                
-                <nav class="clear"> <!-- The nav link semantically marks your main site navigation -->
-                    <ul>
-                        <li><a href="#article1">Exploration</a></li>
-                        <li><a href="#article2">Analysis</a></li>
-                        <li><a href="#article3">Conclusion</a></li>
-                    </ul>
-                </nav>
-            
-            </header>
-            
-            <section id="articles"> <!-- A new section with the articles -->
+    <style type="text/css">
+        .categories-choropleth {
+            fill: #ccc;
+        }
 
-				<!-- Article 1 start -->
+        #tooltip-container {
+            position: absolute;
+            background-color: #fff;
+            color: #000;
+            padding: 10px;
+            border: 1px solid;
+            display: none;
+            text-shadow:none;
+        }
 
-                <div class="line"></div>  <!-- Dividing line -->
-                
-                <article id="article1"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
-                    <h2>Bar in New York</h2>
-                    
-                    <div class="line"></div>
-                    
-                    <div class="articleBody clear">
-                    
-                    	<div id="viz"></div>
-                        <div id="tooltip-container"></div>
+        .tooltip_key {
+            font-weight: bold;
+        }
 
-                        <p>....</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
-                    </div>
-                </article>
-                
-				<!-- Article 1 end -->
+        .tooltip_value {
+            margin-left: 20px;
+            float: right;
+        }
+    </style>
 
+</head>
 
-				<!-- Article 2 start -->
+<body>
+
+    <section id="page">
+        <!-- Defining the #page section with the section tag -->
+
+        <header>
+            <!-- Defining the header section of the page with the appropriate tag -->
+
+            <hgroup>
+                <h1>SDAAV</h1>
+                <h3>the bar in New York</h3>
+            </hgroup>
+
+            <nav class="clear">
+                <!-- The nav link semantically marks your main site navigation -->
+                <ul>
+                    <li><a href="#article1">Exploration</a></li>
+                    <li><a href="#article2">Analysis</a></li>
+                    <li><a href="#article3">Conclusion</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <section id="articles">
+            <!-- A new section with the articles -->
+            <!-- Article 1 start -->
+            <div class="line"></div>  <!-- Dividing line -->
+
+            <article id="article1">
+                <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
+                <h2>Bar in New York</h2>
 
                 <div class="line"></div>
-                
-                <article id="article2">
-                    <h2>Sweet AJAX Tabs</h2>
-<!--
-                    
-                    <div class="line"></div>
-                    
-                    <div class="articleBody clear">
-                    	<figure>
-	                    	<a href="http://tutorialzine.com/2010/01/sweet-tabs-jquery-ajax-css/"><img src="http://tutorialzine.com/img/featured/633.jpg" width="620" height="340" /></a>
-                        </figure>
-                        
-                        <p>Here we are making sweet AJAX-powered tabs with CSS3 and the newly released version 1.4 of jQuery.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
-                    </div>
--->
-                </article>
-                
-				<!-- Article 2 end -->
 
-				<!-- Article 3 start -->
+                <div class="articleBody clear">
 
-                <div class="line"></div>
-                
-                <article id="article3">
-                    <h2>Halftone Navigation Menu</h2>
-<!--
-                    
-                    <div class="line"></div>
-                    
-                    <div class="articleBody clear">
-                    	<figure>
-	                    	<a href="http://tutorialzine.com/2010/01/halftone-navigation-menu-jquery-css/"><img src="http://tutorialzine.com/img/featured/610.jpg" width="620" height="340" /></a>
-                        </figure>
-                        
-                        <p>Today we are making a CSS3 & jQuery halftone-style navigation menu, which will allow you to display animated halftone-style shapes in accordance with the navigation links, and will provide a simple editor for creating additional shapes as well.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
-                    </div>
--->
-                </article>
+                    <div id="viz"></div>
+                    <div id="tooltip-container"></div>
+                    <p>....</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
+                </div>
+            </article>
 
-            </section>
+            <!-- Article 1 end -->
+            <!-- Article 2 start -->
+            <div class="line"></div>
 
-        <footer> <!-- Marking the footer section -->
+            <article id="article2">
+                <h2>Sweet AJAX Tabs</h2>
+                <!--
 
-           <div class="line"></div>
-           
-           <p>Copyright 2017 - The bar team</p>
-           
-           <a href="#" class="up">Go UP</a>
-           
+                                    <div class="line"></div>
+
+                                    <div class="articleBody clear">
+                                        <figure>
+                                            <a href="http://tutorialzine.com/2010/01/sweet-tabs-jquery-ajax-css/"><img src="http://tutorialzine.com/img/featured/633.jpg" width="620" height="340" /></a>
+                                        </figure>
+
+                                        <p>Here we are making sweet AJAX-powered tabs with CSS3 and the newly released version 1.4 of jQuery.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
+                                    </div>
+                -->
+            </article>
+
+            <!-- Article 2 end -->
+            <!-- Article 3 start -->
+            <div class="line"></div>
+
+            <article id="article3">
+                <h2>Halftone Navigation Menu</h2>
+                <!--
+
+                                    <div class="line"></div>
+
+                                    <div class="articleBody clear">
+                                        <figure>
+                                            <a href="http://tutorialzine.com/2010/01/halftone-navigation-menu-jquery-css/"><img src="http://tutorialzine.com/img/featured/610.jpg" width="620" height="340" /></a>
+                                        </figure>
+
+                                        <p>Today we are making a CSS3 & jQuery halftone-style navigation menu, which will allow you to display animated halftone-style shapes in accordance with the navigation links, and will provide a simple editor for creating additional shapes as well.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
+                                    </div>
+                -->
+            </article>
+        </section>
+        <footer>
+            <!-- Marking the footer section -->
+            <div class="line"></div>
+
+            <p>Copyright 2017 - The bar team</p>
+
+            <a href="#" class="up">Go UP</a>
 
         </footer>
-            
-		</section> <!-- Closing the #page section -->
-        
-        <!-- JavaScript Includes -->
-        
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-        <script src="jquery.scrollTo-1.4.2/jquery.scrollTo-min.js"></script>
-        <script src="script.js"></script>
-        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
-    </body>
 
+    </section> <!-- Closing the #page section -->
+    <!-- JavaScript Includes -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="jquery.scrollTo-1.4.2/jquery.scrollTo-min.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+</body>
 <script>
 
-    var colors = d3.scale.category10();
-    var w = 900, h = 800
-    var projection = d3.geo.mercator()
-        .center([-73.896522306614344, 40.754388796109033])
-        .translate([w/2, h/2])
-        .scale([75000]);
+    var COLOR_COUNTS = 5;
 
-    var svg = d3.select("#viz")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
-        
+    function Interpolate(start, end, steps, count) {
+        var s = start,
+            e = end,
+            final = s + (((e - s) / steps) * count);
+        return Math.floor(final);
+    }
 
-    var path = d3.geo.path()
-            .projection(projection);
+    function Color(_r, _g, _b) {
+        var r, g, b;
+        var setColors = function(_r, _g, _b) {
+            r = _r;
+            g = _g;
+            b = _b;
+        };
 
-    d3.json("nyc.json", function(json) {
-        //console.log(json);  //Log output to console
+        setColors(_r, _g, _b);
+        this.getColors = function() {
+            var colors = {
+                r: r,
+                g: g,
+                b: b
+            };
+            return colors;
+        };
+    }
 
-        svg.append("g")
-            .attr("class", "categories-choropleth")
-            .selectAll("path")
-            .data(json.features)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .style("stroke-width", "1")
-            .style("stroke", "black")
-            //.style('fill-opacity', 0.3)
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    var COLOR_FIRST = "#c3e2ff", COLOR_LAST = "#08306B";
+
+    var rgb = hexToRgb(COLOR_FIRST);
+
+    var COLOR_START = new Color(rgb.r, rgb.g, rgb.b);
+
+    rgb = hexToRgb(COLOR_LAST);
+    var COLOR_END = new Color(rgb.r, rgb.g, rgb.b);
+
+    var startColors = COLOR_START.getColors(),
+        endColors = COLOR_END.getColors();
+
+    var colors = [];
+
+    for (var i = 0; i < COLOR_COUNTS; i++) {
+    var r = Interpolate(startColors.r, endColors.r, COLOR_COUNTS, i);
+    var g = Interpolate(startColors.g, endColors.g, COLOR_COUNTS, i);
+    var b = Interpolate(startColors.b, endColors.b, COLOR_COUNTS, i);
+    colors.push(new Color(r, g, b));
+    }
+
+    var quantize = d3.scale.quantize()
+        .domain([0, 1.0])
+        .range(d3.range(COLOR_COUNTS).map(function(i) { return i }));
+
+    //-----------------------------------
+
+function makeMap()
+    {
+        var w = 900, h = 500
+        var projection = d3.geo.mercator()
+            .center([-73.926522306614344, 40.704388796109033])
+            .translate([w/2, h/2])
+            .scale([55000]);
+
+        var svg = d3.select("#viz")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        var path = d3.geo.path()
+                .projection(projection);
+
+        d3.json("nyc.json", function(json) {
+            //console.log(json);  //Log output to console
+
+            svg.append("g")
+                .attr("class", "categories-choropleth")
+                .selectAll("path")
+                .data(json.features)
+                .enter()
+                .append("path")
+                .attr("d", path)
+                .style("stroke-width", "1")
+                .style("stroke", "black")
+                //.style('fill-opacity', 0.3)
 
 
-            .on("mouseover", function(d) {
-                console.log(d);
+                .on("mouseover", function(d) {
+                    //console.log(d);
 
-                var html = "";
+                    var html = "";
 
-                html += "<div class='tooltip_kv'>";
-                html += "<span class='tooltip_key'>";
-                html += d.properties.borough;
-                html += "</span>";
-                html += "<span class='tooltip_value'>";
-                html += d.properties.postalCode;
-                html += "";
-                html += "</span>";
-                html += "</div>";
-                
-                $("#tooltip-container").html(html);
-                $(this).attr("fill-opacity", "0.8");
-                $("#tooltip-container").show();
-                
-                var coordinates = d3.mouse(this);
-                
-                var map_width = $('.categories-choropleth')[0].getBoundingClientRect().width;
-                
-                if (d3.event.layerX < map_width / 2) {
-                    d3.select("#tooltip-container")
-                    .style("top", (d3.event.layerY + 15) + "px")
-                    .style("left", (d3.event.layerX + 15) + "px");
-                } else {
-                    var tooltip_width = $("#tooltip-container").width();
-                    d3.select("#tooltip-container")
-                    .style("top", (d3.event.layerY + 15) + "px")
-                    .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
-                }
+                    html += "<div class='tooltip_kv'>";
+                    html += "<span class='tooltip_key'>";
+                    html += "Party complaints";
+                    html += "</span>";
+                    html += "<span class='tooltip_value'>";
+                    html += valueById.get(d.properties.postalCode).PartyBarComplaints;
+                    html += "";
+                    html += "</span>";
+                    html += "</div>";
 
-                
-            })
-            .on("mouseout", function() {
-                $(this).attr("fill-opacity", "1.0");
-                $("#tooltip-container").hide();
-            })
-//            .text("district")
-            .style("fill", function(d) {
-                //console.log(d);
-                /*
-                if (valueById.get(d.id)) {
-                    var i = quantize(valueById.get(d.id));
-                    var color = colors[i].getColors();
-                    return "rgb(" + color.r + "," + color.g +
-                            "," + color.b + ")";
-                } else {
-                    return "";
-                }
-                */
-            });
+                    $("#tooltip-container").html(html);
+                    $(this).attr("fill-opacity", "0.8");
+                    $("#tooltip-container").show();
+
+                    var coordinates = d3.mouse(this);
+
+                    var map_width = $('.categories-choropleth')[0].getBoundingClientRect().width;
+
+                    if (d3.event.layerX < map_width / 2) {
+                        d3.select("#tooltip-container")
+                        .style("top", (d3.event.layerY + 15) + "px")
+                        .style("left", (d3.event.layerX + 15) + "px");
+                    } else {
+                        var tooltip_width = $("#tooltip-container").width();
+                        d3.select("#tooltip-container")
+                        .style("top", (d3.event.layerY + 15) + "px")
+                        .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
+                    }
+
+
+                })
+                .on("mouseout", function() {
+                    $(this).attr("fill-opacity", "1.0");
+                    $("#tooltip-container").hide();
+                })
+    //            .text("district")
+                .style("fill", function(d) {
+                    //console.log(d);
+
+                    if (valueById.get(d.properties.postalCode)) {
+                        var i = quantize(valueById.get(d.properties.postalCode).PartyBarComplaints);
+                        var color = colors[i].getColors();
+                        return "rgb(" + color.r + "," + color.g +
+                                "," + color.b + ")";
+                    } else {
+                        return COLOR_FIRST;
+                    }
+
+                });
+        });
+    }
+
+var valueById = d3.map();
+
+d3.csv("zipgrouped.csv", function(error, names) {
+
+    /*
+        AirComplaints
+        GraffitiComplaints
+        IncidentZip
+        PartyBarComplaints
+        RodentComplaints
+        TotalComplaints
+        UrineComplaints
+    */
+
+    names.forEach(function(d) {
+        var id = d.IncidentZip;
+        valueById.set(id, d);
     });
 
-</script>
+    quantize.domain([d3.min(names, function(d){ return d.PartyBarComplaints }),
+        d3.max(names, function(d){ return d.PartyBarComplaints })]);
 
+    makeMap();
+});
+
+</script>
 </html>
