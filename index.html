@@ -13,15 +13,16 @@
             fill: #ccc;
         }
 
-        button {
+        .complaintselector {
             border: 1px solid #8c2d04;
             color: #fff;
             background: #fdd0a2;
             padding: 10px 20px;
-            margin: 15px 10px;
+            margin: 5px 10px;
             border-radius: 3px;
+            width: 80px;
         }
-        button:hover {
+        .complaintselector:hover {
             background: #8c2d04;
         }
 
@@ -84,19 +85,20 @@
                 <div class="articleBody clear">
 
                     <div style="display:inline">
-                    <div style="float: left" id="viz"></div>
-                    <div style="float: left" id="maplegend"></div>
+                        <div id="selectors" style="float: left">
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('AirComplaints')">Air</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('GraffitiComplaints')">Grafitti</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('PartyBarComplaints')">Party</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('RodentComplaints')">Rodent</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('UrineComplaints')">Urine</button></p>
+                        </div>
+
+                        <div style="float: left" id="viz"></div>
+                        <div style="float: left" id="maplegend"></div>
                     </div>
 
                     <div style="clear: both"></div>
 
- 			        <div id="selectors" style="padding-left:18%">
-				        <button onclick="ChangeComplaintType('AirComplaints')">Air</button>
-				        <button onclick="ChangeComplaintType('GraffitiComplaints')">Grafitti</button>
-				        <button onclick="ChangeComplaintType('PartyBarComplaints')">Party</button>
-				        <button onclick="ChangeComplaintType('RodentComplaints')">Rodent</button>
-				        <button onclick="ChangeComplaintType('UrineComplaints')">Urine</button>
-			        </div>
                     <div id="tooltip-container"></div>
                     <p>....</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
