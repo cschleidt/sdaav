@@ -15,7 +15,7 @@ figure{
 body{
 	/* Setting the default text color, size, page background and a font stack: */
 	font-size:0.825em;
-	color:#fcfcfc;
+	color:#000000;
 	background-color:#355664;
 	font-family:Arial, Helvetica, sans-serif;
 }
@@ -40,7 +40,6 @@ a img{
 
 h1,h2,h3{
 	font-family:"Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;
-	text-shadow:0 1px 1px black;
 }
 
 h1{
@@ -149,17 +148,16 @@ nav, article, nav ul li a,figure{
 /* Article styles: */
 
 #page{
-	width:960px;
+	width:1200px;
 	margin:0 auto;
 	position:relative;
 }
 
 article{
-	background-color:#213E4A;
+	background-color:#ffffff;
 	margin:3em 0;
-	padding:20px;
+	padding:10px;
 	
-	text-shadow:0 2px 0 black;
 }
 
 figure{

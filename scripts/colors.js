@@ -5,7 +5,7 @@ function MyColors(colorcount){
     this.colors = [];
 
     var COLOR_COUNTS = this.colorcount;
-    var COLOR_FIRST = "#c3e2ff", COLOR_LAST = "#08306B";
+    var COLOR_FIRST = "#fdd0a2", COLOR_LAST = "#8c2d04";
 
     var rgb = this.hexToRgb(COLOR_FIRST);
     var COLOR_START = new this.Color(rgb.r, rgb.g, rgb.b);
