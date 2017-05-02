@@ -84,8 +84,9 @@
 
                 <div class="articleBody clear">
 
-                    <div style="display:inline">
-                        <div id="selectors" style="float: left">
+                    <div style="display:inline; text-align: center">
+                        <div id="selectors" style="float: left; text-align: center; width: 200px; padding-top: 90px">
+                            <p>Select complainttype</p>
                             <p><button class="complaintselector" onclick="ChangeComplaintType('AirComplaints')">Air</button></p>
                             <p><button class="complaintselector" onclick="ChangeComplaintType('GraffitiComplaints')">Grafitti</button></p>
                             <p><button class="complaintselector" onclick="ChangeComplaintType('PartyBarComplaints')">Party</button></p>
@@ -93,8 +94,8 @@
                             <p><button class="complaintselector" onclick="ChangeComplaintType('UrineComplaints')">Urine</button></p>
                         </div>
 
-                        <div style="float: left" id="viz"></div>
-                        <div style="float: left" id="maplegend"></div>
+                        <div style="float: left; text-align: center; width: 800px" id="viz"></div>
+                        <div style="float: left; text-align: center; padding-top: 40px" id="maplegend"></div>
                     </div>
 
                     <div style="clear: both"></div>
@@ -169,7 +170,7 @@ var quantize = d3.scale.quantize()
     .domain([0, 1.0])
     .range(d3.range(COLOR_COUNTS).map(function(i) { return i }));
 
-var complaintmap = new NYCComplaintMap(colorrange);
+var complaintmap = new NYCComplaintMap(colorrange, "Party complaints");
 
 var complaintdata;
 var geojsonnyc;
@@ -200,7 +201,7 @@ function ChangeComplaintType(complatinttype)
     quantize.domain([d3.min(complaintdata, function(d){ return d[complatinttype] }),
         d3.max(complaintdata, function(d){ return d[complatinttype] })]);
 
-    complaintmap.updatemap(quantize);
+    complaintmap.updatemap(quantize, complatinttype);
 }
 
 </script>

@@ -1,6 +1,7 @@
-function NYCComplaintMap(colorrange1)
+function NYCComplaintMap(colorrange1, complainttext)
 {
     this.colorrange = colorrange1; 
+    tpcomplainttext = complainttext;
 
     this.makeMap = function(scalemethod)
     {
@@ -19,8 +20,8 @@ function NYCComplaintMap(colorrange1)
                 .projection(projection);
 
         d3.json("nyc.json", function(json) {
-            console.log(json);  //Log output to console
-
+            console.log(json);
+            
             geojsonnyc = json;
 
             svg.append("g")
@@ -32,22 +33,22 @@ function NYCComplaintMap(colorrange1)
                 .attr("d", path)
                 .style("stroke-width", "1")
                 .style("stroke", "black")
-                //.style('fill-opacity', 0.3)
-
 
                 .on("mouseover", function(d) {
-                    //console.log(d);
 
                     var html = "";
-
                     html += "<div class='tooltip_kv'>";
+                    html += "<p style='padding: 0px 0px 5px 0px; margin: 0px'>" +  d.properties.postalCode + " " + d.properties.PO_NAME + "</p>"
+                    html += "<hr/>"
+                    html += "<div style='padding: 5px 0px 0px 0px'>"
                     html += "<span class='tooltip_key'>";
-                    html += "Party complaints";
+                    html += tpcomplainttext;
                     html += "</span>";
                     html += "<span class='tooltip_value'>";
                     html += valueById.get(d.properties.postalCode);
                     html += "";
                     html += "</span>";
+                    html += "</div>"
                     html += "</div>";
 
                     $("#tooltip-container").html(html);
@@ -130,9 +131,11 @@ function NYCComplaintMap(colorrange1)
     }
 }
 
-NYCComplaintMap.prototype.updatemap = function(scalemethod)
+NYCComplaintMap.prototype.updatemap = function(scalemethod, complainttext)
 {
     var svg = d3.select("svg")
+
+    tpcomplainttext = complainttext;
 
     svg.selectAll("path")
         .data(geojsonnyc.features)
