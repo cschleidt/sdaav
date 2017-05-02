@@ -19,7 +19,7 @@ function NYCComplaintMap(colorrange1)
                 .projection(projection);
 
         d3.json("nyc.json", function(json) {
-            //console.log(json);  //Log output to console
+            console.log(json);  //Log output to console
 
             geojsonnyc = json;
 

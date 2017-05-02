@@ -161,7 +161,7 @@
 
 var valueById = d3.map();
 
-var COLOR_COUNTS = 5;
+var COLOR_COUNTS = 10;
 var mycolors = new MyColors(COLOR_COUNTS);
 var colorrange = mycolors.colors;
 
@@ -188,22 +188,20 @@ d3.csv("zipgrouped.csv", function(error, names) {
         d3.max(names, function(d){ return d.PartyBarComplaints })]);
 
     complaintmap.makeMap(quantize);
-
-    //makeMap(colorrange, quantize);
 });
 
-    function ChangeComplaintType(complatinttype)
-    {
-        complaintdata.forEach(function(d) {
-            var id = d.IncidentZip;
-            valueById.set(id, d[complatinttype]);
-        });
+function ChangeComplaintType(complatinttype)
+{
+    complaintdata.forEach(function(d) {
+        var id = d.IncidentZip;
+        valueById.set(id, d[complatinttype]);
+    });
 
-        quantize.domain([d3.min(complaintdata, function(d){ return d[complatinttype] }),
-            d3.max(complaintdata, function(d){ return d[complatinttype] })]);
+    quantize.domain([d3.min(complaintdata, function(d){ return d[complatinttype] }),
+        d3.max(complaintdata, function(d){ return d[complatinttype] })]);
 
-        complaintmap.updatemap(quantize);
-    }
+    complaintmap.updatemap(quantize);
+}
 
 </script>
 </html>
