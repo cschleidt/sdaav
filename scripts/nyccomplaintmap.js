@@ -11,7 +11,7 @@ function NYCComplaintMap(colorrange1, complainttext)
             .translate([w/2, h/2])
             .scale([50000]);
 
-        var svg = d3.select("#viz")
+        var svgComplaint = d3.select("#complaintmap")
             .append("svg")
             .attr("width", w)
             .attr("height", h);
@@ -19,12 +19,10 @@ function NYCComplaintMap(colorrange1, complainttext)
         var path = d3.geo.path()
                 .projection(projection);
 
-        d3.json("nyc.json", function(json) {
-            console.log(json);
-            
+        d3.json("/data/nyc.json", function(json) {
             geojsonnyc = json;
 
-            svg.append("g")
+            svgComplaint.append("g")
                 .attr("class", "categories-choropleth")
                 .selectAll("path")
                 .data(json.features)
@@ -133,11 +131,11 @@ function NYCComplaintMap(colorrange1, complainttext)
 
 NYCComplaintMap.prototype.updatemap = function(scalemethod, complainttext)
 {
-    var svg = d3.select("svg")
+    var svgComplaint = d3.select("#complaintmap").select("svg")
 
     tpcomplainttext = complainttext;
 
-    svg.selectAll("path")
+    svgComplaint.selectAll("path")
         .data(geojsonnyc.features)
         .transition()
         .duration(700)
