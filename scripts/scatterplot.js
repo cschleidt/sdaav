@@ -224,7 +224,7 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
         .enter()
         .append("text")
         .text(function(d) {
-            return d.zip;
+            return "Zip " + d.zip;
         })
         .attr("x", function(d) {
             return xScale(d.niceness);
@@ -233,7 +233,7 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
             return yScale(d.music);
         })
         .attr("font-family", "sans-serif")
-        .attr("font-size", "19px")
+        .attr("font-size", "14px")
         .attr("font-weight", "bold")
         .attr("fill", "black");
 
@@ -303,7 +303,7 @@ ScatterPlot.prototype.updateplot = function(dataset)
         .transition()
         .duration(1500)
         .text(function(d) {
-            return d.zip;
+            return "Zip "+d.zip;
         })
         .attr("x", function(d) {
             return xScale(d.niceness);
