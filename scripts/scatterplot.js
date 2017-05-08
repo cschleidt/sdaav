@@ -52,6 +52,8 @@ $( "#slider-range-max" ).slider({
 var s = $('#slider-range-max').slider();
 i = 0;
 currYear = 2010
+s.slider("value",currYear);
+$("#amount").val(currYear);
 
 function timedUpdate() 
 {
@@ -97,8 +99,6 @@ function timedUpdate()
 function ScatterPlot(dataset1)
 {
     this.dataset = dataset1
-
-
 }
      
 ScatterPlot.prototype.doscatterplot = function(dataset)

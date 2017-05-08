@@ -106,10 +106,11 @@
             <!-- Defining the header section of the page with the appropriate tag -->
 
             <hgroup>
-                <h1>SDAAV</h1>
+                <h1>Social data analysis and visualization</h1>
                 <h3>the bar in New York</h3>
             </hgroup>
 
+            <!--
             <nav class="clear">
                 <ul>
                     <li><a href="#article1">Exploration</a></li>
@@ -117,7 +118,7 @@
                     <li><a href="#article3">Conclusion</a></li>
                 </ul>
             </nav>
-
+            -->
         </header>
 
         
@@ -173,7 +174,7 @@
                 </p>
                 <h4>Structure of the document</h4>
                 <p>
-                    
+                    The document contains two section
                 </p>
 
             </article>
@@ -203,7 +204,8 @@
                 </div>
                 <p></p>
                 <p>
-                    To make data comperable they are all scaled (0-1), where 0 illustrates a minimum value and 1 a maximun value within the zipcodes.
+                    To make data comperable they are all scaled (0-1), where 0 illustrates a minimum value and 1 a maximun value within the zipcodes. 
+                    This is illustrated with colorcodes in the diagram. The data statistics are discussed elsewhere.
                 </p>
                 <p style="padding: 0px"></p>
                 <p>
@@ -239,7 +241,8 @@
             <div class="line"></div>
 
             <article id="article2">
-                <h2>Cluster map</h2>
+                <h2>Visualizing the model</h2>
+
                 <div class='line'></div>
 				<p> Using the values found and shown in the data exploration section 
 				we defined a combined value for the complaints, the market pricing
@@ -248,36 +251,46 @@
 				<p> Additionally we grouped the zip codes together into 20 clusters, which have similar trademarks of complaints.</p>
 				<p> We used these to show the clusters by color, niceness and the relative party potential on the bars on the left. </p>
 				<p> Using this illustration you can look at the individual zip codes to see how it stands in comparison to the rest </p>
-				
-                <div class="line"></div>
+                <div class='line'></div>
+                <p></p>
 
-                <div style="display:inline; text-align: center">
-                    <div id="clusterselectionbar" style="float: left; text-align: center; width: 200px;"></div>
+
+c                    <div id="clusterselectionbar" style="float: left; text-align: center; width: 200px;"></div>
                     <div style="float: left; text-align: center; width: 800px" id="clustermap"></div>
                 </div>
 
                 <div style="clear: both"></div>
-            </article>
 
-            <div class="line"></div>
-
-            <article id="article3">
+                <!--
                 <h2>Scatterplot</h2>
+                -->
+                <p></p>
+                <p></p>
                 <div class='line'></div>
 				<p> Looking at the previous illustration we have chosen the cluster we deemed to be best in regards to both niceness and music.</p>
 				<p> These have been plotted on scatterplot, and the change over time is shown by moving the slider or automatically by cliking the button </p>
 				<p> Each circle represents a zip code, and the size represent the combined value of both niceness and music </p>
-                 <div class="line"></div>
+                <div class='line'></div>
 
-                <div class='centre'></div>
+                <p></p>
 
                 <div id="scatterplot" class='border'></div>
 
-                <label for="amount" style="font-size: 20px; font-weight:bold">Year:</label>
-                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-size: 25px; font-weight:bold;">
+                <p></p>
+                <div style="text-align: center; width: 100%">
+                    <div style="margin:0 auto; width: 60%">
+                        <label for="amount" style="font-size: 20px; font-weight:bold;">Year:</label>
+                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-size: 25px; font-weight:bold; width: 70px; text-align: center;">
+                    </div>
+                </div>
+                <p></p>
 
-                <div id="slider-range-max"></div>
-                <button onclick="timedUpdate()" class="complaintselector">Click for animation</button>
+                <div style="text-align: center; width: 100%">
+                    <div id="slider-range-max" style="margin:0 auto; width: 80%"></div>
+                    <p></p>
+                    <button onclick="timedUpdate()" class="complaintselector">Click for animation</button>
+                </div>
+
             </article>
             <article>
                 <h2>Conclusion</h2>
