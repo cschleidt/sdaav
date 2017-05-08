@@ -16,7 +16,7 @@ function getvizdata()
             data.forEach(function(d) {
                 d.zip = parseInt(d.Incident_Zip);
                 d.music = parseFloat(d.Party_Bar_Complaints);
-                d.niceness = parseFloat(d.Niceness_norm);
+                d.niceness = parseFloat(d.Niceness_rescaled);
                 d.Year = parseInt(d.Year)//parseInt(d.year);
             });
 
