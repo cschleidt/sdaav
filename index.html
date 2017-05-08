@@ -105,28 +105,12 @@
 <body>
 
     <section id="page">
-        <!-- Defining the #page section with the section tag -->
-
         <header>
-            <!-- Defining the header section of the page with the appropriate tag -->
-
             <hgroup>
                 <h1>Social data analysis and visualization</h1>
                 <h3>the bar in New York</h3>
             </hgroup>
-
-            <!--
-            <nav class="clear">
-                <ul>
-                    <li><a href="#article1">Exploration</a></li>
-                    <li><a href="#article2">Analysis</a></li>
-                    <li><a href="#article3">Conclusion</a></li>
-                </ul>
-            </nav>
-            -->
         </header>
-
-        
 
         <section id="articles">
             <div class="line"></div>
@@ -205,12 +189,12 @@
                     The visualization below gives an explanatory overview of data used in the analysis. 
                     It provides the user with a basic understanding of New York's zip codes 
                     and the attributes which are the basis for our analysis.
-
-                    The map highlights the data used in the analysis as mentioned above:
                 </p>
                 <p>
                     To make data comperable they are all scaled (0-1), where 0 illustrates a minimum value and 1 a maximun value within the zip codes of New York. 
-                    This is illustrated with color codes in the map. The data statistics are discussed in detail in the notebook.
+                    This is illustrated with color codes in the map. The reader will notice there are zipcodes without color (white). 
+                    This is due to missing data and specificly the case for proptery pricing data. 
+                    The data statistics are discussed in detail in the notebook.
                 </p>
                 <p style="padding: 0px"></p>
                 <p>
@@ -256,6 +240,7 @@
                     we defined a combined value for the complaints, the property value
                     and the quality of the trees. We call this value "Niceness" which 
                     is a score from 0-1 which shows how pleasant a zip code is compared to the others. 
+                    Some of the zip codes are white as it was not possible to calculate the niceness score, due to missing data.
                 </p>
 				<p> 
                     We have grouped the zip codes into 20 clusters, which have similar trademarks of complaints and property values and tree quality.
