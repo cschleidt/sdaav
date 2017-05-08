@@ -11,10 +11,10 @@
                 .domain([0, 1])
                 .range([0, hClusterMap]);
 
-            d3.csv("/data/zip_newdf_norm_w_cluster_v3.csv", function(error, data) {
+            d3.csv("/data/total_data_rescaled_d3_formatted.csv", function(error, data) {
 
                  data.forEach(function(d) {
-                    dataTable[String(parseInt(d.Incident_Zip))] = [d.cluster,d.Niceness_norm,d.Party_Bar_Complaints];
+                    dataTable[String(parseInt(d.Incident_Zip))] = [d.cluster,d.Niceness_rescaled,d.Party_Bar_Complaints];
                     zips.push(parseInt(d.Incident_Zip));
                  });
 
