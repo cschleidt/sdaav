@@ -156,7 +156,6 @@
                     The "Party Bar" dataset indicates where the party scene is, while a combination of other attributes will guide us to the "nice" neighbourhoods.
                     Data for the project are based on NYC OpenData and Zillow.com.
                     NYC OpenData provides different statistics, for example registrered complaints (311). Zillow.com provides property price information.
-
                 </p>
                 <div style="padding-left: 17px">
                     <ol>
@@ -382,13 +381,11 @@ d3.csv("/data/total_data_d3_formatted.csv", function(error, names) {
     // for default - show partycomplaints
     names.forEach(function(d) {
         var id = parseInt(d.IncidentZip);
-        valueById.set(id, d.PartyBarComplaints);
+        valueById.set(id, parseInt(d.PartyBarComplaints));
     });
 
-
-
-    quantize.domain([d3.min(names, function(d){ return d.PartyBarComplaints }),
-        d3.max(names, function(d){ return d.PartyBarComplaints })]);
+    quantize.domain([d3.min(names, function(d){ return parseInt(d.PartyBarComplaints) }),
+        d3.max(names, function(d){ return parseInt(d.PartyBarComplaints) })]);
 
     ChangeActive("PartyBarComplaints");
 
@@ -403,13 +400,27 @@ getvizdata();
 
 function ChangeComplaintType(complatinttype)
 {
-    complaintdata.forEach(function(d) {
-        var id = parseInt(d.IncidentZip);
-        valueById.set(id, d[complatinttype]);
-    });
+    valueById = d3.map();
 
-    quantize.domain([d3.min(complaintdata, function(d){ return d[complatinttype] }),
-        d3.max(complaintdata, function(d){ return d[complatinttype] })]);
+    if(complatinttype == "ShareofGood")
+    {
+        complaintdata.forEach(function(d) {
+            var id = parseInt(d.IncidentZip);
+            valueById.set(id, d[complatinttype]);
+        });
+
+        quantize.domain([0, 1.0]);
+    }
+    else
+    {    
+        complaintdata.forEach(function(d) {
+            var id = parseInt(d.IncidentZip);
+            valueById.set(id, parseInt(d[complatinttype]));
+        });
+
+        quantize.domain([d3.min(complaintdata, function(d){ return parseInt(d[complatinttype]) }),
+            d3.max(complaintdata, function(d){ return parseInt(d[complatinttype]) })]);
+    }
 
     complaintmap.updatemap(quantize, complatinttype);
 }

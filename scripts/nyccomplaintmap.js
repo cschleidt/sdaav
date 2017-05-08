@@ -44,6 +44,7 @@ function NYCComplaintMap(colorrange1, complainttext)
                     html += "</span>";
                     html += "<span class='tooltip_value'>";
                     html += valueById.get(d.properties.postalCode);
+                    html += ": " + scalemethod(valueById.get(d.properties.postalCode));
                     html += "";
                     html += "</span>";
                     html += "</div>"
@@ -74,7 +75,7 @@ function NYCComplaintMap(colorrange1, complainttext)
                 })
                 .style("fill", function(d) {
                     
-                    console.log(d);
+                    //console.log(d);
                     
                     if (valueById.get(d.properties.postalCode)) {
                         var i = scalemethod(valueById.get(d.properties.postalCode));
@@ -82,9 +83,11 @@ function NYCComplaintMap(colorrange1, complainttext)
                             var color = colorrange[i].getColors();
                         }
                         else{
+                            //console.log("Color not found")
                             var color = colorrange[0].getColors();
                         }
                     } else {
+                            //console.log("Color not found 1")
                         var color = colorrange[0].getColors();
                     }
                     return "rgb(" + color.r + "," + color.g +
@@ -145,10 +148,15 @@ NYCComplaintMap.prototype.updatemap = function(scalemethod, complainttext)
         .style("fill", function(d) {
             if (valueById.get(d.properties.postalCode)) {
                 var i = scalemethod(valueById.get(d.properties.postalCode));
+                
+                //console.log(valueById.get(d.properties.postalCode));
+                //console.log(i);
+                
                 if(i) {
                     var color = colorrange[i].getColors();
                 }
                 else{
+                    //console.log("color not found", d);
                     var color = colorrange[0].getColors();
                 }
             } else {
