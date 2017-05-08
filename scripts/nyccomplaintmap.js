@@ -43,7 +43,7 @@ function NYCComplaintMap(colorrange1, complainttext)
                     html += tpcomplainttext;
                     html += "</span>";
                     html += "<span class='tooltip_value'>";
-                    html += parseInt(valueById.get(d.properties.postalCode));
+                    html += valueById.get(d.properties.postalCode);
                     html += "";
                     html += "</span>";
                     html += "</div>"
