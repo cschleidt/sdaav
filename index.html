@@ -143,10 +143,36 @@
                 </div>
                 <p></p>
 
+                <h4>Motivation</h4>
                 <p>
-                    Projektets formål er at skabe en model for den optimale placering af en bar i New York.
+                    The objective of the project is to identify a location for a new bar in New York. 
+                    We want to find a "sweet spot" where there is an active party scene but in a "nice" area. 
+                    
+                    The "Party Bar" dataset indicates where the party scene is, while a combination of other attributes will guide us to the "nice" neighbourhoods.
+                </p>
+                <h4>The data</h4>
+                <p>
+                    The "Party Bar" dataset indicates where the party scene is, while a combination of other attributes will guide us to the "nice" neighbourhoods.
+                    Data for the project for based on NYC OpenData and .... PUT REFERRENCE HERE ... 
+                    NYC OpenData provides different statistics, 
 
-                    For at skabe modellen tages udgangspunkt i forskellige datakilder, som hver især giver informatione, positive som negative, der anvendes som parametre i modellen.
+                </p>
+                <div style="padding-left: 17px">
+                    <ol>
+                        <li>Rodent Complaints</li>
+                        <li>Graffiti Complaints</li>
+                        <li>Air quality Complaints</li>
+                        <li>Urinating in Public Complaints</li>
+                        <li>Property Market Value</li>
+                        <li>Number of trees</li>
+                        <li>Condition of trees (share of trees that are in good condition)</li>
+                    </ol>
+                </div>
+
+                <p></p>
+                <h4>Structure of the document</h4>
+                <p>
+
                 </p>
 
             </article>
@@ -155,15 +181,23 @@
 
             <article id="article1">
                 <h2>Data exploration</h2>
+                <div class="line"></div>
                 <p>
                     The visualization below gives an explanatory overview of data used for the analysis. 
-                    It shows:
+                    It provides the user with a basic understanding of New Yorks areas zip codes 
+                    and the data/parameters that is the basis for our model.
+
+                    As mentioned above, the diagram outlines the datasets used in the analysis:
                 </p>
                 <div style="padding-left: 17px">
                     <ul>
-                        <li>Complaintstypes from NYC OpenData - 311 Service Request from 2010 to present</li>
-                        <li>Avgerage sqft property prices per zip code</li>
-                        <li>Registration of total and healthy trees per zip code </li>
+                        <li>Rodent Complaints</li>
+                        <li>Graffiti Complaints</li>
+                        <li>Air quality Complaints</li>
+                        <li>Urinating in Public Complaints</li>
+                        <li>Property Market Value</li>
+                        <li>Number of trees</li>
+                        <li>Condition of trees (share of trees that are in good condition)</li>
                     </ul>
                 </div>
                 <p></p>
@@ -322,8 +356,6 @@ function ChangeComplaintType(complatinttype)
     else {
         if (obj.focus)
             obj.focus ();
-        else
-            alert ("Your browser does not support this example!");
     }
 }
 
