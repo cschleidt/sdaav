@@ -169,17 +169,55 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
         .on("mouseover", function(d) {      
             div.transition()        
                 .duration(200)      
-                .style("opacity", 1);      
-
-
-            div .html("<div class'tooltip'>" + d.zip + "<br/>music: "  + d.music + "<br/>niceness: "  + d.niceness +"</div>") 
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY -28) + "px");    
-        })                  
-        .on("mouseout", function(d) {       
-            div.transition()        
-                .duration(500)      
-                .style("opacity", 0) });
+                .style("opacity", 1)      
+                var html = "";
+                    html += "<div class='tooltip_kv'>";
+                    html += "<span class='tooltip_key'>";
+					html += "Zip"
+					html += "</span>"
+                    html += "<span class='tooltip_value'>";
+                    html += d.zip;
+                    html += "</span>";
+					html += "</div>"
+                    html += "<div class='tooltip_kv'>";
+                    html += "<span class='tooltip_key'>";
+					html += "Music"
+					html += "</span>"
+                    html += "<span class='tooltip_value'>";
+                    html += (parseInt(d.music*100))/100;
+					html += "</span>";
+					html += "</div>";
+                    html += "<div class='tooltip_kv'>";
+                    html += "<span class='tooltip_key'>";
+					html += "Niceness"
+					html += "</span>"
+                    html += "<span class='tooltip_value'>";
+                    html += (parseInt(d.niceness*100))/100;
+					html += "</span>";
+					html += "</div>";
+	                    
+                    $("#tooltip-container").html(html);
+					$(this).attr("fill-opacity", "0.8");
+                    $("#tooltip-container").show();
+					var coordinates = d3.mouse(this);
+                    
+                    var map_width = $('.categories-choropleth')[0].getBoundingClientRect().width;
+                    
+                    if (d3.event.layerX < map_width / 2) {
+                        d3.select("#tooltip-container")
+                        .style("top", (d3.event.layerY + 15) + "px")
+                        .style("left", (d3.event.layerX + 15) + "px");
+                    } else {
+                        var tooltip_width = $("#tooltip-container").width();
+                        d3.select("#tooltip-container")
+                        .style("top", (d3.event.layerY + 15) + "px")
+                        .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
+                    }
+					})                  
+                .on("mouseout", function() {
+                    $(this).attr("fill-opacity", "1.0");
+                    $("#tooltip-container").hide();
+                })
 
     svgScatter.selectAll("text")
         .data(dataset)

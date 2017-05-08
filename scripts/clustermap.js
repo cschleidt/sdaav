@@ -24,7 +24,7 @@
 
     function makeClusterMap()
     {
-        var colors = d3.scale.category10();
+        var colors = d3.scale.category20();
         var projection = d3.geo.mercator()
             .center([-73.926522306614344, 40.704388796109033])
             .translate([wClusterMap/2, hClusterMap/2])
@@ -131,7 +131,7 @@
             .data(dataset)
             .enter()
             .append("rect")
-            .style("fill", "blue")
+            .style("fill", "#fdd0a2")
             .attr("x", function(d, i) {
                 return i * ((wClusterMap/10) / dataset.length); 
                 })
@@ -143,7 +143,7 @@
                 return scaleClusterMap(barHeight);
              })
              .style("stroke-width", "2")
-             .style("stroke", "black");
+             .style("stroke", "#8c2d04");
 
         svgbar.selectAll("text")
             .data(dataset)
@@ -153,7 +153,7 @@
                 return i * ((wClusterMap/10) / dataset.length);
             })
             .attr("y", function(d) {
-                return hClusterMap - scaleClusterMap(d);
+                return hClusterMap - scaleClusterMap(d)-5;
             })
             .text(function(d) { return d; });
 
@@ -176,7 +176,7 @@
            .style("font-weight","bold")
            .style("font-family","sans-serif")
             .text(function(d, i){
-                return (i ? "party" : "nice");
+                return (i ? "Party" : "Nice");
             });  
     }        
 
@@ -213,7 +213,7 @@
             })
             */
             .attr("y", function(d) {
-                return hClusterMap - scaleClusterMap(d);
+                return hClusterMap - scaleClusterMap(d)-5;
             });
 
 
