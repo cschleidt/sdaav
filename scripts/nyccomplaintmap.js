@@ -43,7 +43,7 @@ function NYCComplaintMap(colorrange1, complainttext)
                     html += tpcomplainttext;
                     html += "</span>";
                     html += "<span class='tooltip_value'>";
-                    html += valueById.get(d.properties.postalCode);
+                    html += parseInt(valueById.get(d.properties.postalCode));
                     html += "";
                     html += "</span>";
                     html += "</div>"
@@ -73,6 +73,9 @@ function NYCComplaintMap(colorrange1, complainttext)
                     $("#tooltip-container").hide();
                 })
                 .style("fill", function(d) {
+                    
+                    console.log(d);
+                    
                     if (valueById.get(d.properties.postalCode)) {
                         var i = scalemethod(valueById.get(d.properties.postalCode));
                         if(i) {

@@ -20,7 +20,7 @@
             padding: 10px 20px;
             margin: 5px 10px;
             border-radius: 3px;
-            width: 80px;
+            width: 150px;
         }
         .complaintselector:hover {
             background: #8c2d04;
@@ -111,7 +111,6 @@
             </hgroup>
 
             <nav class="clear">
-                <!-- The nav link semantically marks your main site navigation -->
                 <ul>
                     <li><a href="#article1">Exploration</a></li>
                     <li><a href="#article2">Analysis</a></li>
@@ -133,8 +132,16 @@
 
                 <p>
                     Dette er en opgave til faget <strong>02806 Social data analyse og visualisering F17</strong>
-
                 </p>
+
+                <div style="padding-left: 17px">
+                    <ul>
+                        <li>Luisa Chachamovitz</li>
+                        <li>Dennis Olesen</li>
+                        <li>Chrsitian Schleidt</li>
+                    </ul>
+                </div>
+                <p></p>
 
                 <p>
                     Projektets formål er at skabe en model for den optimale placering af en bar i New York.
@@ -149,7 +156,23 @@
             <article id="article1">
                 <h2>Data exploration</h2>
                 <p>
-                    The figure gives an overview of data used for the analysis. It shows reported complaint types (311), average income and property pricing by zipcode in New York
+                    The visualization below gives an explanatory overview of data used for the analysis. 
+                    It shows:
+                </p>
+                <div style="padding-left: 17px">
+                    <ul>
+                        <li>Complaintstypes from NYC OpenData - 311 Service Request from 2010 to present</li>
+                        <li>Avgerage sqft property prices per zip code</li>
+                        <li>Registration of total and healthy trees per zip code </li>
+                    </ul>
+                </div>
+                <p></p>
+                <p>
+                    To make data comperable they are all scaled (0-1), where 0 illustrates a minimum value and 1 a maximun value within the zipcodes.
+                </p>
+                <p style="padding: 0px"></p>
+                <p>
+                    Select the buttons to the right to display the different catetogies.
                 </p>
 
                 <div class="line"></div>
@@ -157,17 +180,19 @@
                 <div class="articleBody clear">
 
                     <div style="display:inline; text-align: center">
-                        <div id="selectors" style="float: left; text-align: center; width: 200px; padding-top: 90px">
-                            <p>Select complainttype</p>
-                            <p><button class="complaintselector" onclick="ChangeComplaintType('AirComplaints')">Air</button></p>
-                            <p><button class="complaintselector" onclick="ChangeComplaintType('GraffitiComplaints')">Grafitti</button></p>
-                            <p><button class="complaintselector" onclick="ChangeComplaintType('PartyBarComplaints')">Party</button></p>
-                            <p><button class="complaintselector" onclick="ChangeComplaintType('RodentComplaints')">Rodent</button></p>
-                            <p><button class="complaintselector" onclick="ChangeComplaintType('UrineComplaints')">Urine</button></p>
+                        <div id="selectors" style="float: left; text-align: center; width: 200px; padding-top: 10px">
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('AirQualityComplaints')">Air quality complaints</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('GraffitiComplaints')">Grafitti complaints</button></p>
+                            <p><button class="complaintselector" id="PartyBarComplaints" onclick="ChangeComplaintType('PartyBarComplaints')">Party complaints</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('RodentComplaints')">Rodent complaints</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('UrineComplaints')">Public urinating complaints</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('Pricepersqft')">Average Sqft price</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('TotalTrees')">Total trees</button></p>
+                            <p><button class="complaintselector" onclick="ChangeComplaintType('ShareofGood')">Healthy trees</button></p>
                         </div>
 
                         <div style="float: left; text-align: center; width: 800px" id="complaintmap"></div>
-                        <div style="float: left; text-align: center; padding-top: 40px" id="maplegend"></div>
+                        <div style="float: left; text-align: center; padding-top: 45px" id="maplegend"></div>
                     </div>
 
                     <div style="clear: both"></div>
@@ -211,7 +236,7 @@
             <!-- Marking the footer section -->
             <div class="line"></div>
 
-            <p>The bar team</p>
+            <p>The bar team: Luisa Chachamovitz, Dennis Olesen and Christian Schleidt</p>
 
             <a href="#" class="up">Go UP</a>
 
@@ -249,18 +274,22 @@ var complaintmap = new NYCComplaintMap(colorrange, "Party complaints");
 var complaintdata;
 var geojsonnyc;
 
-d3.csv("zipgrouped.csv", function(error, names) {
+d3.csv("/data/total_data_d3_formatted.csv", function(error, names) {
     // save data structure
     complaintdata = names;
 
     // for default - show partycomplaints
     names.forEach(function(d) {
-        var id = d.IncidentZip;
+        var id = parseInt(d.IncidentZip);
         valueById.set(id, d.PartyBarComplaints);
     });
 
+
+
     quantize.domain([d3.min(names, function(d){ return d.PartyBarComplaints }),
         d3.max(names, function(d){ return d.PartyBarComplaints })]);
+
+    ChangeActive("PartyBarComplaints");
 
     complaintmap.makeMap(quantize);
 });
@@ -274,7 +303,7 @@ getvizdata();
 function ChangeComplaintType(complatinttype)
 {
     complaintdata.forEach(function(d) {
-        var id = d.IncidentZip;
+        var id = parseInt(d.IncidentZip);
         valueById.set(id, d[complatinttype]);
     });
 
@@ -284,6 +313,19 @@ function ChangeComplaintType(complatinttype)
     complaintmap.updatemap(quantize, complatinttype);
 }
 
+ function ChangeActive(id) 
+ {
+    var obj = document.getElementById(id);
+    if (obj.setActive) {
+        obj.setActive ();
+    }
+    else {
+        if (obj.focus)
+            obj.focus ();
+        else
+            alert ("Your browser does not support this example!");
+    }
+}
 
 </script>
 </html>
