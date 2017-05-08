@@ -247,7 +247,7 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
             .attr("x", w - padding * 2)
             .attr("y", -6)
             .style("text-anchor", "end")
-            .text("niceness");
+            .text("Niceness");
     
     //Create Y axis
     svgScatter.append("g")
@@ -261,7 +261,7 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
             .attr("x", -50)
             //.attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("music");
+            .text("Music");
 
 	//Just in case you would want to add a title on the scatterplot.
    /** svgScatter.append("text")
