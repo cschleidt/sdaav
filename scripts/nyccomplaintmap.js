@@ -148,19 +148,16 @@ NYCComplaintMap.prototype.updatemap = function(scalemethod, complainttext)
         .style("fill", function(d) {
             if (valueById.get(d.properties.postalCode)) {
                 var i = scalemethod(valueById.get(d.properties.postalCode));
-                
-                //console.log(valueById.get(d.properties.postalCode));
-                //console.log(i);
-                
+                i++;
                 if(i) {
+                    console.log(i);
                     var color = colorrange[i].getColors();
                 }
                 else{
-                    //console.log("color not found", d);
-                    var color = colorrange[0].getColors();
+                    return "rgb(255, 255, 255)";
                 }
             } else {
-                var color = colorrange[0].getColors();
+                return "rgb(255, 255, 255)";
             }
             return "rgb(" + color.r + "," + color.g +
                     "," + color.b + ")";

@@ -16,7 +16,7 @@ function MyColors(colorcount){
     var startColors = COLOR_START.getColors(),
         endColors = COLOR_END.getColors();
  
-    for (var i = 0; i < COLOR_COUNTS; i++) {
+    for (var i = 0; i <= COLOR_COUNTS; i++) {
         var r = this.Interpolate(startColors.r, endColors.r, COLOR_COUNTS, i);
         var g = this.Interpolate(startColors.g, endColors.g, COLOR_COUNTS, i);
         var b = this.Interpolate(startColors.b, endColors.b, COLOR_COUNTS, i);
