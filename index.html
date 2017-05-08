@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
 
     <style type="text/css">
+	
+		p {
+			font-size: 16px
+		}
         .categories-choropleth {
             fill: #ccc;
         }
@@ -138,44 +142,57 @@
 
                 <div style="padding-left: 17px">
                     <ul>
-                        <li>Luisa Chachamovitz</li>
-                        <li>Dennis Olesen</li>
-                        <li>Chrsitian Schleidt</li>
+                        <li>Luisa Chachamovitz - s170472</li>
+                        <li>Dennis Olesen - s155996</li>
+                        <li>Chrsitian Schleidt - s007352</li>
                     </ul>
                 </div>
                 <p></p>
 
                 <h4>Motivation</h4>
                 <p>
-                    The objective of the project is to identify a location for a new bar in New York. 
-                    We want to find a "sweet spot" where there is an active party scene but in a "nice" area. 
-                    The reader of this document should get a basic understanding of New Yorks areas zip codes and understand why we choose to open a bar in the chosen location.
+					The objective of the project is to identify a location for a new bar in New York. We want to find a "sweet spot" 
+					where the area is wealthy, well kept and pleasant while party scene is active.
                 </p>
                 <h4>The data</h4>
                 <p>
-                    The "Party Bar" dataset indicates where the party scene is, while a combination of other attributes will guide us to the "nice" neighbourhoods.
-                    Data for the project are based on NYC OpenData and Zillow.com.
-                    NYC OpenData provides different statistics, for example registrered complaints (311). Zillow.com provides property price information.
+					We will use 3-1-1 complaints about loud bars as a proxy for how active the
+					party scene is in each of the New York City zip codes,
+					while a combination of the remaining attributes will guide us through the city 
+					in search for the "nicest" neighbourhood.
+
                 </p>
-                <div style="padding-left: 17px">
+				<h4> Attributes </h4>
+
+				<ol>
+					<h4> 3-1-1 Complaints</h4> <a href="https://data.cityofnewyork.us">Source</a>
+
+					<div style="padding-left: 25px">
                     <ol>
                         <li>Rodent Complaints</li>
                         <li>Graffiti Complaints</li>
                         <li>Air quality Complaints</li>
+						<li>Loud noise from bars</li>
                         <li>Urinating in Public Complaints</li>
-                        <li>Property Market Value</li>
-                        <li>Number of trees</li>
+					</ol>
+					</br>
+					</div>
+					<h4> Tree Census Data</h4> <a href="https://data.cityofnewyork.us">Source</a>
+					<div style="padding-left: 25px">
+					<ol>
                         <li>Condition of trees (share of trees that are in good condition)</li>
-                    </ol>
+                        <li>Number of trees</li>
+					</ol>
+					</br>
+					</div>
+					<h4> Zillow property value data </h4>  <a href="zillow.com">Source</a>
+					<div style="padding-left: 25px">
+					<ol>
+					    <li>Property Market Value</li>
+					</ol>
+					</div>
+                </ol>
                 </div>
-
-                <p>
-
-                </p>
-                <h4>Structure of the document</h4>
-                <p>
-                    The document contains two section
-                </p>
 
             </article>
 
@@ -185,31 +202,19 @@
                 <h2>Exploring the data</h2>
                 <div class="line"></div>
                 <p>
-                    The visualization below gives an explanatory overview of data used for the analysis. 
-                    It provides the user with a basic understanding of New Yorks areas zip codes 
-                    and the data/parameters that is the basis for our model.
+                    The visualization below gives an explanatory overview of data used in the analysis. 
+                    It provides the user with a basic understanding of New York's zip codes 
+                    and the attributes which are the basis for our analysis.
 
-                    The diagram outlines the datasets used in the analysis as mentioned above:
+                    The map highlights the data used in the analysis as mentioned above:
                 </p>
-                <div style="padding-left: 17px">
-                    <ul>
-                        <li>Rodent Complaints</li>
-                        <li>Graffiti Complaints</li>
-                        <li>Air quality Complaints</li>
-                        <li>Urinating in Public Complaints</li>
-                        <li>Property Market Value</li>
-                        <li>Number of trees</li>
-                        <li>Condition of trees (share of trees that are in good condition)</li>
-                    </ul>
-                </div>
-                <p></p>
                 <p>
-                    To make data comperable they are all scaled (0-1), where 0 illustrates a minimum value and 1 a maximun value within the zipcodes. 
-                    This is illustrated with colorcodes in the diagram. The data statistics are discussed elsewhere.
+                    To make data comperable they are all scaled (0-1), where 0 illustrates a minimum value and 1 a maximun value within the zip codes of New York. 
+                    This is illustrated with color codes in the map. The data statistics are discussed in detail in the notebook.
                 </p>
                 <p style="padding: 0px"></p>
                 <p>
-                    Select the buttons to the left to display the different catetogies.
+                    Select the buttons to the left to display the different attributes.
                 </p>
 
                 <div class="line"></div>
@@ -314,12 +319,18 @@
                 <h2>Conclusion</h2>
                 <div class='line'></div>
                 <p></p>
-				<p> Looking at the previous plot, we want a zip code which is near the top right corner, and has a large circle. </p>
-				<p> We had already narrowed the search down to the 17th cluster. And by looking at the zip codes we see that 10014 stands out
-				as it is almost as nice as the other neighborhoods but has significantly more of a party scene. </p>
-				<p>Which shows that despite there not being one location which wins on all the scores, this location is the best solution for our situation </p>
-				<p> This has led us to the area in which we could place our bar </p>
-				<p> Additionally this is the place where our good friends Joey and Chandler used to hang out, which is pretty cool. </p>
+				
+				<p> We started with a 129 zip codes, looking for the perfect spot for our bar. By exploring the data, we narrowed it down to 4 zip codes
+				that showed the best potential for our bar. The last visualization help us pick the best location among the 4 chosen: we want the zip code 
+				that is nearest the top right corner, (a zip with a good party scene and a nice atmosphere), which would also be indicated by a large circle. </p>
+				
+				<p>The chart shows that none of the four zip codes meet all our requirements, however 10014 stands out for two reasons:</p>
+				<div style="padding-left: 25px">
+				<ol>
+					<li>It is almost as nice as the other neighborhoods, but has significantly more of a party scene</li>
+					<li>It is the zip code of Greewich Village, where our good friends Joey and Chandler used to hang out, which is pretty cool!</li>
+				</ol>
+				</div>
 				<div style="text-align: center; width 100%">
 					<div style="margin:0 auto; width 60%">
 				<iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sda!2sdk!4v1494242846192!6m8!1m7!1sik_vxJdQRZjSp82zCEUMvA!2m2!1d40.73244978231181!2d-74.00540686450228!3f101.9853927016739!4f10.537317391512147!5f0.7820865974627469"  width="600" height="450" frameborder="0" style="border:0;" allowfullscreen></iframe>
