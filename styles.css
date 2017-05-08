@@ -75,7 +75,7 @@ p{
 	height:1px;
 	background-color:#24404c;
 	border-bottom:1px solid #416371;
-	margin:1em 0;
+	margin:0.5em 0;
 	overflow:hidden;
 }
 
@@ -83,7 +83,7 @@ article .line{
 	/* The dividing line inside of the article is darker: */
 	background-color:#15242a;
 	border-bottom-color:#204656;
-	margin:1.3em 0;
+	margin:0.5em 0;
 }
 
 footer .line{

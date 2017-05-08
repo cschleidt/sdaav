@@ -121,13 +121,30 @@
 
         </header>
 
+        
+
         <section id="articles">
-            <!-- A new section with the articles -->
-            <div class="line"></div>  <!-- Dividing line -->
+            <div class="line"></div>
+
+            <article id="introduction">
+                <h2>Introduction</h2>
+
+                <div class="line"></div>
+
+                <p>
+                    
+
+                </p>
+
+            </article>
+
+            <div class="line"></div>
 
             <article id="article1">
-                <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
-                <h2>Bar in New York</h2>
+                <h2>Data exploration</h2>
+                <p>
+                    The figure gives an overview of data used for the analysis. It shows reported complaint types (311), income and property pricing by zipcode in New York
+                </p>
 
                 <div class="line"></div>
 
@@ -150,39 +167,34 @@
                     <div style="clear: both"></div>
 
                     <div id="tooltip-container"></div>
-                    <p>....</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus quam quis nibh fringilla sit amet consectetur lectus malesuada. Sed nec libero erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi nisi, rhoncus ut vestibulum ac, sollicitudin quis lorem. Duis felis dui, vulputate nec adipiscing nec, interdum vel tortor. Sed gravida, erat nec rutrum tincidunt, metus mauris imperdiet nunc, et elementum tortor nunc at eros. Donec malesuada congue molestie. Suspendisse potenti. Vestibulum cursus congue sem et feugiat. Morbi quis elit odio. </p>
                 </div>
             </article>
 
-            <!-- Article 2 start -->
             <div class="line"></div>
 
             <article id="article2">
                 <h2>Cluster map</h2>
-                    <div id="clusterselectionbar" style="display: inline-block;"></div>
-                    <div id="clustermap" style="display: inline-block;"></div>
-                    <!--
-                    <div id="tooltip-container"></div>
-                    -->
+                <div class="line"></div>
+
+                <div id="clusterselectionbar" style="display: inline-block;"></div>
+                <div id="clustermap" style="display: inline-block;"></div>
             </article>
 
-            <!-- Article 2 end -->
-            <!-- Article 3 start -->
             <div class="line"></div>
 
             <article id="article3">
                 <h2>Scatterplot</h2>
-                    <div class='centre'></div>
+                 <div class="line"></div>
 
-                    <div id="scatterplot" class='border'></div>
+                <div class='centre'></div>
 
-                    <p>
-                        <label for="amount" style="font-size: 20px; font-weight:bold">Year:</label>
-                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-size: 25px; font-weight:bold;">
-                    </p>
-                    <div id="slider-range-max"></div>
-                    <button onclick="timedUpdate()">Click for animation</button>
+                <div id="scatterplot" class='border'></div>
+
+                <label for="amount" style="font-size: 20px; font-weight:bold">Year:</label>
+                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-size: 25px; font-weight:bold;">
+
+                <div id="slider-range-max"></div>
+                <button onclick="timedUpdate()">Click for animation</button>
             </article>
         </section>
         <footer>
