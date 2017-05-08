@@ -16,7 +16,7 @@ function getvizdata()
             data.forEach(function(d) {
                 d.zip = parseInt(d.Incident_Zip);
                 d.music = parseFloat(d.Party_Bar_Complaints);
-                d.niceness = parseFloat(d.Niceness_norm);
+                d.niceness = parseFloat(d.Niceness_rescaled);
                 d.Year = parseInt(d.Year)//parseInt(d.year);
             });
 
@@ -225,8 +225,9 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
             .style("text-anchor", "end")
             .text("music");
 
-    svgScatter.append("text")
-        .text("Your text goes here")
+	//Just in case you would want to add a title on the scatterplot.
+   /** svgScatter.append("text")
+       // .text("")
         .attr("transform","translate(50,30)")
         .attr("x",function(d) {
             return (w/2)-padding
@@ -234,7 +235,7 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
         .style("text-anchor", "middle")
         .style("font", "bold")
         .style("font-size","22px");
-
+    **/
 
 }
 
