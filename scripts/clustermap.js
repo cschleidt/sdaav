@@ -2,7 +2,7 @@
 
     dataTable = {};
     zips = []
-    var wClusterMap = 700, hClusterMap = 600
+    var wClusterMap = 700, hClusterMap = 500
     var scaleClusterMap;
 
     function getclusterdata()
@@ -26,9 +26,9 @@
     {
         var colors = d3.scale.category10();
         var projection = d3.geo.mercator()
-            .center([-73.896522306614344, 40.754388796109033])
+            .center([-73.926522306614344, 40.704388796109033])
             .translate([wClusterMap/2, hClusterMap/2])
-            .scale([65000]);
+            .scale([50000]);
 
         var svg = d3.select("#clustermap")
             .append("svg")
