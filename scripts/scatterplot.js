@@ -225,8 +225,9 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
             .style("text-anchor", "end")
             .text("music");
 
-    svgScatter.append("text")
-        .text("Your text goes here")
+	//Just in case you would want to add a title on the scatterplot.
+   /** svgScatter.append("text")
+       // .text("")
         .attr("transform","translate(50,30)")
         .attr("x",function(d) {
             return (w/2)-padding
@@ -234,7 +235,7 @@ ScatterPlot.prototype.doscatterplot = function(dataset)
         .style("text-anchor", "middle")
         .style("font", "bold")
         .style("font-size","22px");
-
+    **/
 
 }
 
